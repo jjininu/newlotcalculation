@@ -3,6 +3,7 @@ import json
 from flask import Flask, render_template, request
 
 from function import *
+import os
 
 
 app  = Flask(__name__)
@@ -32,3 +33,4 @@ def result():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    app.run(host ='0.0.0.0',debug  =Ttue,post = os.environ['PORT])

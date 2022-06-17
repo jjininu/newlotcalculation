@@ -18,9 +18,7 @@ def clean_data(file):
           "Gentamysin", "Phenobarbital", "Phenytoin",
           "Salicylates", "Theophylline", "Tobramycin", "VPA", 'Na', 'K', 'Cl']
     l3 = ['114.B/C', '115.GAP', '116.A/G', '118.IBIL', '120.OSMO', 'Lipemia', 'Icterus', 'Hemolysis']
-    l4_1 = ['88891', '88901']
-    l4_2 = ['88892', '88902']
-    l4_3 = ['88893', '88903']
+
     l5 = ["qc1", "qc2", "qc3"]
 
     df = pd.read_csv(file)
@@ -30,9 +28,9 @@ def clean_data(file):
     df_new = df[["S. ID", "Test Name", "Conc."]]
     df_new.rename(columns={"S. ID": "ID", "Test Name": "Test", "Conc.": "Conc"}, inplace=True)
     df_new["Test"] = df_new["Test"].replace(l1, l2)
-    df_new["ID"] = df_new["ID"].replace(l4_1, l5[0])
-    df_new["ID"] = df_new["ID"].replace(l4_2, l5[1])
-    df_new["ID"] = df_new["ID"].replace(l4_3, l5[2])
+#     df_new["ID"] = df_new["ID"].replace(l4_1, l5[0])
+#     df_new["ID"] = df_new["ID"].replace(l4_2, l5[1])
+#     df_new["ID"] = df_new["ID"].replace(l4_3, l5[2])
 
     df_new = df_new[df_new.Test.isin(l3) == False]
     df_new = df_new.astype({"Conc": float})
